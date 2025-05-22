@@ -9,8 +9,106 @@ body {
   z-index: 1;
 }
 
+/* Fondo bandera flameando */
+.fondo-bandera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  animation: flamear-bandera 6s infinite ease-in-out;
+  pointer-events: none; /* no interfiere con clicks */
+}
 
+.fondo-bandera .franja {
+  flex: 1;
+}
 
+.fondo-bandera .franja.celeste {
+  background-color: #74acdf;
+}
+
+.fondo-bandera .franja.blanca {
+  background-color: white;
+  position: relative;
+}
+
+/* Sol con rayos */
+.fondo-bandera .sol {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #f6b100 40%, #e0a200 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 0;
+}
+
+.fondo-bandera .sol::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 130px;
+  height: 130px;
+  background: conic-gradient(
+    #f6b100 0deg 10deg,
+    transparent 10deg 20deg,
+    #f6b100 20deg 30deg,
+    transparent 30deg 40deg,
+    #f6b100 40deg 50deg,
+    transparent 50deg 60deg,
+    #f6b100 60deg 70deg,
+    transparent 70deg 80deg,
+    #f6b100 80deg 90deg,
+    transparent 90deg 100deg,
+    #f6b100 100deg 110deg,
+    transparent 110deg 120deg,
+    #f6b100 120deg 130deg,
+    transparent 130deg 140deg,
+    #f6b100 140deg 150deg,
+    transparent 150deg 160deg,
+    #f6b100 160deg 170deg,
+    transparent 170deg 180deg,
+    #f6b100 180deg 190deg,
+    transparent 190deg 200deg,
+    #f6b100 200deg 210deg,
+    transparent 210deg 220deg,
+    #f6b100 220deg 230deg,
+    transparent 230deg 240deg,
+    #f6b100 240deg 250deg,
+    transparent 250deg 260deg,
+    #f6b100 260deg 270deg,
+    transparent 270deg 280deg,
+    #f6b100 280deg 290deg,
+    transparent 290deg 300deg,
+    #f6b100 300deg 310deg,
+    transparent 310deg 320deg,
+    #f6b100 320deg 330deg,
+    transparent 330deg 340deg,
+    #f6b100 340deg 350deg,
+    transparent 350deg 360deg
+  );
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Animación flameo de la bandera */
+@keyframes flamear-bandera {
+  0% { transform: scaleX(1) scaleY(1) rotate(0deg); }
+  25% { transform: scaleX(1.03) scaleY(1.05) rotate(0.3deg); }
+  50% { transform: scaleX(1) scaleY(1) rotate(0deg); }
+  75% { transform: scaleX(1.03) scaleY(1.05) rotate(-0.3deg); }
+  100% { transform: scaleX(1) scaleY(1) rotate(0deg); }
+}
+
+/* Contenedor principal de contenido encima */
 .container {
   padding: 40px 20px;
   max-width: 800px;
@@ -46,6 +144,7 @@ h1 {
   color: #333;
 }
 
+/* Bandera fija animada (si usás) */
 .bandera-container {
   padding: 10px;
   position: relative;
@@ -63,7 +162,7 @@ h1 {
   100% { transform: rotate(0deg); }
 }
 
-/* Bandera móvil */
+/* Bandera móvil con el mouse */
 #movingFlag {
   position: absolute;
   top: 0;
@@ -74,124 +173,3 @@ h1 {
   z-index: 1000;
   transition: transform 0.1s ease-out;
 }
-
-/* Bandera Argentina Dibujada */
-.bandera-argentina {
-  width: 100%;
-  max-width: 600px;
-  margin: 40px auto;
-  height: auto;
-  min-height: 180px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ccc;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.franja {
-  flex: 1;
-}
-
-.franja.celeste {
-  background-color: #74acdf;
-}
-
-.franja.blanca {
-  background-color: white;
-  position: relative;
-}
-
-.sol {
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle, #f6b100 0%, #e0a200 100%);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
-}
-
-.bandera-fondo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  z-index: -1;
-}
-
-.bandera-fondo .franja {
-  flex: 1;
-}
-
-.bandera-fondo .celeste {
-  background-color: #74acdf;
-}
-
-.bandera-fondo .blanca {
-  background-color: white;
-  position: relative;
-}
-
-.bandera-fondo .sol {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, #f6b100 0%, #e0a200 100%);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
-}
-.fondo-bandera {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  z-index: -1;
-  animation: flamear-bandera 6s infinite ease-in-out;
-}
-
-.franja {
-  flex: 1;
-}
-
-.franja.celeste {
-  background-color: #74acdf;
-}
-
-.franja.blanca {
-  background-color: white;
-  position: relative;
-}
-
-.sol {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, #f6b100 0%, #e0a200 100%);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-}
-
-@keyframes flamear-bandera {
-  0% { transform: scaleX(1) scaleY(1); }
-  25% { transform: scaleX(1.01) scaleY(1.02) rotate(0.1deg); }
-  50% { transform: scaleX(1) scaleY(1); }
-  75% { transform: scaleX(1.01) scaleY(1.02) rotate(-0.1deg); }
-  100% { transform: scaleX(1) scaleY(1); }
-}
-
