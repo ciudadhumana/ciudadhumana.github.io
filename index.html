@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ciudad Humana</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- 👉 Pegá aquí tu código de verificación de Meta -->
+  <!-- Ejemplo real: -->
+  <!-- <meta name="facebook-domain-verification" content="TU-CODIGO-AQUI" /> -->
+
 </head>
 <body>
 
@@ -28,29 +33,18 @@
 
   <script>
     const flag = document.getElementById('movingFlag');
+    let posX = 0, posY = 0;
+    let targetX = 0, targetY = 0;
 
-    // Posiciones actuales
-    let posX = 0;
-    let posY = 0;
-
-    // Posiciones objetivo (del mouse)
-    let targetX = 0;
-    let targetY = 0;
-
-    // Escuchar movimiento del mouse y actualizar objetivo
     window.addEventListener('mousemove', (e) => {
       targetX = e.clientX - flag.offsetWidth / 2;
       targetY = e.clientY - flag.offsetHeight / 2;
     });
 
-    // Función para animar movimiento suave
     function animate() {
-      // Lerp (interpolación suave)
       posX += (targetX - posX) * 0.1;
       posY += (targetY - posY) * 0.1;
-
       flag.style.transform = `translate(${posX}px, ${posY}px)`;
-
       requestAnimationFrame(animate);
     }
 
