@@ -1,12 +1,14 @@
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #ffffff 50%, #74acdf 50%);
   margin: 0;
   padding: 0;
   text-align: center;
   color: #005bac;
   overflow-x: hidden;
+  position: relative;
+  z-index: 0;
 }
+
 
 .container {
   padding: 40px 20px;
@@ -111,3 +113,40 @@ h1 {
   transform: translate(-50%, -50%);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
 }
+
+.bandera-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+}
+
+.bandera-fondo .franja {
+  flex: 1;
+}
+
+.bandera-fondo .celeste {
+  background-color: #74acdf;
+}
+
+.bandera-fondo .blanca {
+  background-color: white;
+  position: relative;
+}
+
+.bandera-fondo .sol {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #f6b100 0%, #e0a200 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
