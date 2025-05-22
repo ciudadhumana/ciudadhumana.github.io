@@ -71,3 +71,43 @@ h1 {
   z-index: 1000;
   transition: transform 0.1s ease-out;
 }
+
+.bandera-argentina {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  aspect-ratio: 5 / 3;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.franja {
+  flex: 1;
+}
+
+.franja.celeste {
+  background-color: #74acdf;
+}
+
+.franja.blanca {
+  background-color: white;
+  position: relative;
+}
+
+.sol {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #f6b100 0%, #e0a200 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+
