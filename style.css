@@ -5,6 +5,7 @@ body {
   padding: 0;
   text-align: center;
   color: #005bac;
+  overflow-x: hidden; /* evitar scroll horizontal si la bandera se pasa */
 }
 
 .container {
@@ -14,6 +15,8 @@ body {
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 91, 172, 0.2);
+  position: relative;
+  z-index: 10; /* encima de la bandera móvil */
 }
 
 .logo {
@@ -42,6 +45,8 @@ h1 {
 
 .bandera-container {
   padding: 10px;
+  position: relative;
+  z-index: 10;
 }
 
 .bandera {
@@ -49,9 +54,19 @@ h1 {
   animation: flamear 2s infinite ease-in-out;
 }
 
-/* Animación de flameo suave */
 @keyframes flamear {
   0% { transform: rotate(0deg); }
   50% { transform: rotate(2deg); }
   100% { transform: rotate(0deg); }
+}
+
+/* Estilo para la bandera que se mueve con el mouse */
+#movingFlag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px; /* tamaño ajustable */
+  pointer-events: none; /* para que no interfiera con clicks */
+  z-index: 1000;
+  transition: transform 0.1s ease-out;
 }
