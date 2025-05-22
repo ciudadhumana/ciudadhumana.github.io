@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ciudad Humana</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Bandera animada fija -->
   <div class="bandera-container">
-    <img src="bandera.gif" alt="Bandera Argentina" class="bandera">
+    <img src="bandera.gif" alt="Bandera Argentina" class="bandera" />
   </div>
 
   <div class="container">
-    <img src="logo.png" alt="Logo de Ciudad Humana" class="logo">
+    <img src="logo.png" alt="Logo de Ciudad Humana" class="logo" />
     <h1>Ciudad Humana</h1>
     <p class="slogan">Estamos organizando la bronca para construir la alternativa!!!</p>
     <p class="texto">
@@ -20,5 +22,39 @@
       están por encima de los intereses privados.
     </p>
   </div>
+
+  <!-- Bandera que se mueve con el mouse -->
+  <img src="logociudad.jpeg" id="movingFlag" alt="Bandera móvil" />
+
+  <script>
+    const flag = document.getElementById('movingFlag');
+
+    // Posiciones actuales
+    let posX = 0;
+    let posY = 0;
+
+    // Posiciones objetivo (del mouse)
+    let targetX = 0;
+    let targetY = 0;
+
+    // Escuchar movimiento del mouse y actualizar objetivo
+    window.addEventListener('mousemove', (e) => {
+      targetX = e.clientX - flag.offsetWidth / 2;
+      targetY = e.clientY - flag.offsetHeight / 2;
+    });
+
+    // Función para animar movimiento suave
+    function animate() {
+      // Lerp (interpolación suave)
+      posX += (targetX - posX) * 0.1;
+      posY += (targetY - posY) * 0.1;
+
+      flag.style.transform = `translate(${posX}px, ${posY}px)`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 </body>
 </html>
