@@ -36,67 +36,62 @@ body {
   position: relative;
 }
 
-/* Sol con rayos */
+/* Sol más realista con rayos */
 .fondo-bandera .sol {
-  width: 90px;
-  height: 90px;
-  background: radial-gradient(circle, #f6b100 40%, #e0a200 100%);
-  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at center, #f6b100 45%, #e0a200 90%);
+  border-radius: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  z-index: 0;
+  box-shadow:
+    0 0 15px rgba(246, 177, 0, 0.6),
+    inset 0 0 20px #fff7a1;
+  z-index: 1;
 }
 
+/* Rayos principales largos (8) */
 .fondo-bandera .sol::before {
   content: "";
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 130px;
-  height: 130px;
-  background: conic-gradient(
-    #f6b100 0deg 10deg,
-    transparent 10deg 20deg,
-    #f6b100 20deg 30deg,
-    transparent 30deg 40deg,
-    #f6b100 40deg 50deg,
-    transparent 50deg 60deg,
-    #f6b100 60deg 70deg,
-    transparent 70deg 80deg,
-    #f6b100 80deg 90deg,
-    transparent 90deg 100deg,
-    #f6b100 100deg 110deg,
-    transparent 110deg 120deg,
-    #f6b100 120deg 130deg,
-    transparent 130deg 140deg,
-    #f6b100 140deg 150deg,
-    transparent 150deg 160deg,
-    #f6b100 160deg 170deg,
-    transparent 170deg 180deg,
-    #f6b100 180deg 190deg,
-    transparent 190deg 200deg,
-    #f6b100 200deg 210deg,
-    transparent 210deg 220deg,
-    #f6b100 220deg 230deg,
-    transparent 230deg 240deg,
-    #f6b100 240deg 250deg,
-    transparent 250deg 260deg,
-    #f6b100 260deg 270deg,
-    transparent 270deg 280deg,
-    #f6b100 280deg 290deg,
-    transparent 290deg 300deg,
-    #f6b100 300deg 310deg,
-    transparent 310deg 320deg,
-    #f6b100 320deg 330deg,
-    transparent 330deg 340deg,
-    #f6b100 340deg 350deg,
-    transparent 350deg 360deg
-  );
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  margin: -70px 0 0 -70px;
   border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      #f6b100 0deg 6deg,
+      transparent 6deg 12deg
+    );
+  box-shadow: 0 0 20px rgba(246,177,0,0.5);
   z-index: -1;
+  filter: drop-shadow(0 0 4px #f6b100);
+}
+
+/* Rayos secundarios cortos (16) */
+.fondo-bandera .sol::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from 6deg,
+      #f6b100 0deg 3deg,
+      transparent 3deg 6deg
+    );
+  opacity: 0.7;
+  z-index: -1;
+  filter: drop-shadow(0 0 3px #e0a200);
 }
 
 /* Animación flameo de la bandera */
