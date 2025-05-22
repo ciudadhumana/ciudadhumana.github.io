@@ -65,8 +65,9 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 120px; /* tamaño ajustable */
-  pointer-events: none; /* para que no interfiera con clicks */
+  width: 100px;
+  height: 100px;  /* Agregado */
+  pointer-events: none;
   z-index: 1000;
   transition: transform 0.1s ease-out;
 }
